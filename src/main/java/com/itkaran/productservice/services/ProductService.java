@@ -6,6 +6,7 @@ import com.itkaran.productservice.models.Product;
 import java.util.List;
 
 public interface ProductService {
-    Product getSingleProduct(Long productId) throws ProductNotFoundException;
+    Product getProductById(Long productId) throws ProductNotFoundException;
     List<Product> getAllProducts();
+
 }

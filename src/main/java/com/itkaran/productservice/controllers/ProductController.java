@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -30,5 +31,11 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAllProducts() throws ProductNotFoundException {
         List<Product> products = productService.getAllProducts();
         return new ResponseEntity<> (products, HttpStatus.OK);
+     }
+
+     @GetMapping("/{id}")
+     public ResponseEntity<Product> getProductById(@PathVariable("id") long productId) throws ProductNotFoundException {
+            Product product = productService.getProductById(productId);
+            return new ResponseEntity<> (product, HttpStatus.OK);
      }
 }
